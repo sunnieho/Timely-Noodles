@@ -1,0 +1,27 @@
+<%- include('header'); -%>
+
+<main class="flex-grow-1">
+  <div class="container mt-5">
+            <!-- breadcrumb -->
+            <div class="m-4">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/contact">Contact Us</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Thank you!</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- end of breadcrumb -->
+
+            <div class="container py-5 ">
+              <div class="alert alert-light border rounded">
+                <h2>Thank you, <%= name %>!</h2>
+                <p>Your message has been sent successfully.</p>
+                <hr>
+                <p><strong>Your message:</strong></p>
+                <p><%= message %></p>
+                <a href="/" class="btn btn-success text-white mt-3">Back to Home</a>
+              </div>
+            </div>
+
+<%- include('footer'); -%>

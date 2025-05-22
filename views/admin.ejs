@@ -1,0 +1,46 @@
+<%- include('header'); -%>
+
+<main class="container py-5">
+  <h2 class="mb-4">Admin Dashboard</h2>
+
+  <div class="mb-4">
+    <h4>Download Product Feedback</h4>
+    <a href="/export-product-feedback" class="btn btn-success">Download CSV</a>
+  </div>
+
+  <hr>
+
+  <div class="mt-4">
+    <h4>Contact Us Messages</h4>
+    <% if (contacts.length === 0) { %>
+      <p>No contact messages found.</p>
+    <% } else { %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Message</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% contacts.forEach(msg => { %>
+              <tr>
+                <td><%= msg.firstname %> <%= msg.surname %></td>
+                <td><%= msg.email %></td>
+                <td><%= msg.phone %></td>
+                <td><%= msg.message %></td>
+                <td><%= new Date(msg.timestamp).toLocaleString() %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('footer'); -%>

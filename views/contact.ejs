@@ -1,0 +1,84 @@
+<%- include('header'); -%>
+
+
+    <main class="flex-grow-1">
+        <div class="container-fluid h-100">
+            <!-- breadcrumb -->
+            <div class="m-4">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- end of breadcrumb -->
+
+            <!-- Contact us -->
+            <div class="container style="max-width: 960px;">
+                <form class="needs-validation" novalidate method="POST" action="/contact">
+
+                    <div class="container-fluid text-dark p-3 text-center">
+                        <div class="mb-4">
+                            <h1 class="pt-5">Contact Us</h1>
+                            <p>We are here to help you! Please fill out the form below and we will get back to you as soon
+                                as
+                                possible.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01" class="form-label">Firstname</label>
+                                <input type="text" class="form-control" id="validationCustom01" name="firstname" required>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">You didn't enter your name!</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02" class="form-label">Surname</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="surname" required>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">You didn't enter your Surname!</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                                    aria-describedby="emailHelp" required>
+                                <div class="valid-feedback">Wonderful!</div>
+                                <div class="invalid-feedback">You didn't enter your Email!</div>
+    
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Mobile</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="0435-123-456"
+                                    pattern="[0-9]{10}" required>
+                                <div class="valid-feedback">Perfect!</div>
+                                <div class="invalid-feedback">You didn't enter your Moblie phone!</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="validationTextarea" class="form-label">You want say something?</label>
+                            <textarea class="form-control" id="validationTextarea" name="message" placeholder="Required example textarea"
+                                required></textarea>
+                            <div class="valid-feedback">Awesome!</div>
+                            <div class="invalid-feedback">Tell me something!</div>
+    
+                        </div>
+                    </div>
+                    <!-- Submit buttons -->
+                    <div class="container text-center">
+                        <button type="submit" class="btn btn-primary btn-lg m-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary btn-lg m-2">Reset</button>
+                    </div>
+    
+                </form>
+            </div>
+            
+            <!-- end of contact us -->
+        </div>
+    </main>
+
+
+
+
+    <%- include('footer'); -%>

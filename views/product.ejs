@@ -1,0 +1,116 @@
+<%- include('header'); -%>
+
+<!-- breadcrumb -->
+<div class="m-4">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/menu">Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Product</li>
+        </ol>
+    </nav>
+</div>
+<!-- end of breadcrumb -->
+
+<main class="container py-5">
+  <!-- product -->
+    <div class="mt-3 mb-3">
+        <div class="text-warning">
+          <% for(let i = 1; i <= 5; i++) { %>
+            <% if(i <= Math.round(averageRating)) { %>
+              <i class="fas fa-star"></i>
+            <% } else if(i - 0.5 <= averageRating) { %>
+              <i class="fas fa-star-half-alt"></i>
+            <% } else { %>
+              <i class="far fa-star"></i>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <img src="<%= product.image %>" class="img-fluid rounded" alt="<%= product.name %>">
+    </div>
+    <div class="col-md-6">
+      <h2 class="fw-bold text-dark"><%= product.name %></h2>
+      <p><%= product.description %></p>
+      <a href="https://www.ubereats.com/tw/store/%E7%94%98%E9%9C%96%E6%B9%AF%E7%83%8F%E9%BE%8D-%E6%B0%B8%E5%92%8C%E5%BA%97/aBK0xoxTWLSZiubsH5D15g?diningMode=PICKUP&utm_campaign=CM2508147-search-free-nonbrand-google-pas_e_all_acq_Global&utm_medium=search-free-nonbrand&utm_source=google-pas" 
+         target="_blank" 
+         class="btn btn-success btn-lg text-white">
+         Order Now - <%= product.price %>
+      </a>
+    </div>
+    
+  </div>
+
+  <!-- messages -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2 class="mb-4">Customer Reviews</h2>
+      <% if(messages && messages.length > 0) { %>
+        <% messages.forEach(msg => { %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0"><%= msg.firstname %></h5>
+                <div class="text-warning">
+                  <% for(let i = 1; i <= 5; i++) { %>
+                    <% if(i <= msg.rating) { %>
+                      <i class="fas fa-star"></i>
+                    <% } else { %>
+                      <i class="far fa-star"></i>
+                    <% } %>
+                  <% } %>
+                </div>
+              </div>
+              <p class="card-text"><%= msg.message %></p>
+              <small class="text-muted"><%= new Date(msg.timestamp).toLocaleString() %></small>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>No reviews yet. Be the first to review!</p>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- message form -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2 class="mb-4">Do you want to say something?</h2>
+      
+      <form action="/product-feedback" method="POST" class="needs-validation" novalidate>
+
+
+        <input type="hidden" name="product" value="<%= product.name %>">
+        <div class="mb-3">
+          <label class="form-label">Rating</label>
+          <div class="rating">
+            <% for(let i = 5; i >= 1; i--) { %>
+              <input type="radio" name="rating" value="<%= i %>" id="star<%= i %>" required>
+              <label for="star<%= i %>"><i class="fas fa-star"></i></label>
+            <% } %>
+          </div>
+          <div class="invalid-feedback">Please select a rating.</div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="firstname" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" required>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label">Your Review</label>
+          <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+          <div class="invalid-feedback">Please enter your review.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include('footer'); -%>

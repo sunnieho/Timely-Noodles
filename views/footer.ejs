@@ -1,0 +1,36 @@
+    <!-- footer -->
+    <div class="container-fluid">
+        <footer class="py-3 my-4">
+            <p class="text-center text-body-secondary">&copy; 2025 Timely Noodle. All rights reserved.</p>
+        </footer>
+    </div>
+    <!-- end of footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/style.js"></script>
+
+    <script>
+      
+        const forms = document.querySelectorAll('.needs-validation')
+    
+      
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            } else {
+              // Prevent double submission
+              const submitButton = form.querySelector('button[type="submit"]')
+              if (submitButton) {
+                submitButton.disabled = true
+                submitButton.innerHTML = 'Submitting...'
+              }
+            }
+    
+            form.classList.add('was-validated')
+          }, false)
+        })
+        </script>
+</body>
+</html>
