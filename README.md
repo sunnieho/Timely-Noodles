@@ -1,7 +1,5 @@
 # Timely-Noodles
 Demo website: https://timely-noodles.onrender.com/
-Username: admin
-password: 1234
 
 Timely Noodles - SIT774 10.4HD Project
 
